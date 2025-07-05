@@ -1,4 +1,4 @@
-public enum BlackPieces {
+public enum BlackPieces implements Piece {
     KING      (5,  'e', "\u265A"), // ♚
     QUEEN     (4,  'd', "\u265B"), // ♛
     ROOK_1    (8,  'h', "\u265C"), // ♜

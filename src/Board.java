@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Arrays;
 
 public class Board {
 
     private List<Cell> cells;
 
-    public Board() {
+    public Board(String colorOfPiece, int numberOfPieces) {
         cells = new ArrayList<>();
 
         // Crear las 64 celdas vacías (sin pieza)
@@ -17,22 +17,32 @@ public class Board {
             }
         }
 
-        // Mezclar las celdas para distribuir las piezas aleatoriamente
-        Collections.shuffle(cells);
-
-        // Obtener las piezas negras (BlackPieces enum)
-        BlackPieces[] pieces = BlackPieces.values();
-
-        // Colocar las piezas en las primeras 16 celdas aleatorias
-        for (int i = 0; i < pieces.length; i++) {
-            cells.get(i).setPiece(pieces[i]);
-        }
+        populateBoard(colorOfPiece, numberOfPieces);
 
         // Ordenar la lista para que la impresión quede ordenada por fila y columna
         cells.sort((a, b) -> {
             if (a.row != b.row) return Integer.compare(a.row, b.row);
             return Integer.compare(a.col, b.col);
         });
+    }
+
+    private void populateBoard(String colorOfPiece, int numberOfPieces) {
+        // Mezclar las celdas para distribuir las piezas aleatoriamente
+        Collections.shuffle(cells);
+
+        Piece[] pieces;
+        if ("w".equalsIgnoreCase(colorOfPiece)) {
+            pieces = Arrays.copyOfRange(WhitePieces.values(), 0, numberOfPieces);
+        } else if ("b".equalsIgnoreCase(colorOfPiece)) {
+            pieces = Arrays.copyOfRange(BlackPieces.values(), 0, numberOfPieces);
+        } else {
+            throw new IllegalArgumentException("Invalid piece color: " + colorOfPiece);
+        }
+
+        // Colocar las piezas en las primeras celdas aleatorias
+        for (int i = 0; i < pieces.length; i++) {
+            cells.get(i).setPiece(pieces[i]);
+        }
     }
 
     public void printBoard() {
@@ -63,9 +73,6 @@ public class Board {
         return cells;
     }
 
-    public void applySort(SortStrategy<Cell> sorter, Comparator<Cell> comparator) {
-        sorter.sort(cells, comparator);
-    }
     public void setCells(List<Cell> cells) {
         this.cells = cells;
     }
