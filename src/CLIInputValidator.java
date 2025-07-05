@@ -56,8 +56,8 @@ public class CLIInputValidator {
     }
 
     private void validateArguments() {
-        if (sorterAlgorithm == null || !java.util.Arrays.asList("s", "b", "i", "q", "h", "c", "r").contains(sorterAlgorithm.toLowerCase())) {
-            throw new IllegalArgumentException("Invalid sorting algorithm. Allowed: S, B, I, Q, H, C, R.");
+        if (sorterAlgorithm == null || !java.util.Arrays.asList("s", "b", "i", "q", "h", "c", "r", "m").contains(sorterAlgorithm.toLowerCase())) {
+            throw new IllegalArgumentException("Invalid sorting algorithm. Allowed: S, B, I, Q, H, C, R, M");
         }
 
         if (typeOfList == null || !java.util.Arrays.asList("n", "c").contains(typeOfList.toLowerCase())) {
@@ -69,11 +69,11 @@ public class CLIInputValidator {
         }
 
         if (!java.util.Arrays.asList(1, 2, 4, 6, 8, 10, 16).contains(numberOfPieces)) {
-            throw new IllegalArgumentException("Invalid number of pieces. Allowed: 1, 2, 4, 6, 8, 10, 16.");
+            throw new IllegalArgumentException("Invalid number of pieces. Allowed: 8, 10, 16.");
         }
 
-        if (pauseTime < 100 || pauseTime > 1000) {
-            throw new IllegalArgumentException("Pause time must be between 100 and 1000.");
+        if (pauseTime < 0 || pauseTime > 1000) {
+            throw new IllegalArgumentException("Pause time must be between 0 and 1000.");
         }
     }
 
@@ -100,12 +100,12 @@ public class CLIInputValidator {
     public static void printHelp() {
         System.out.println("Usage: java Program [arguments]");
         System.out.println("Arguments:");
-        System.out.println("  a=<algorithm>     Sorting algorithm (e.g., bubble, merge, quick)");
-        System.out.println("  t=<list type>     Type of list (e.g., arraylist, linkedlist)");
+        System.out.println("  a=<algorithm>     Sorting algorithm (e.g., b");
+        System.out.println("  t=<list type>     Type of list sorter (numerical (n) or chars (c) ) (e.g., n)");
         System.out.println("  c=<color>         Color of pieces (white or black)");
-        System.out.println("  n=<number>        Number of pieces (1-32)");
-        System.out.println("  s=<milliseconds>  Pause time between steps");
+        System.out.println("  n=<number>        Number of pieces (8, 10 or 16)");
+        System.out.println("  s=<milliseconds>  Pause time between steps (0 - 1000 milliseconds)");
         System.out.println("Example:");
-        System.out.println("  java Main a=bubble t=arraylist c=white n=16 s=500");
+        System.out.println("  java Main a=b t=n c=b n=16 s=100");
     }
 }

@@ -52,6 +52,14 @@ public class ChessManager {
             comparator = CellComparators.BY_LETTER;
         }
 
+        // Adjust comparator based on piece color for ascending/descending order
+        if ("w".equalsIgnoreCase(colorOfPiece)) {
+            System.out.println("Sorting in descending order for white pieces...");
+            comparator = comparator.reversed();
+        } else { // "b" or any other case, default to ascending
+            System.out.println("Sorting in ascending order for black pieces...");
+        }
+
         // 4. Run the sorting algorithm
         System.out.println("Starting sort with " + sorterAlgorithm + " algorithm...");
         sortStrategy.sort(board.getCells(), comparator, pauseTime);
