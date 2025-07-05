@@ -1,17 +1,22 @@
-public class Main{
+public class Main {
 
     public static void main(String[] args) {
-        Board board = new Board();
-        board.printBoard();
+        try {
+            // 1. Validate command line arguments
+            CLIInputValidator validator = new CLIInputValidator(args);
 
-        System.out.println("Ordenando paso a paso...\n");
+            // 2. Initialize and run the chess game manager
+            new ChessManager(validator);
 
-        SortStrategy<Cell> sorter = new BubbleSort<>(cells -> {
-            board.setCells(cells);     // actualiza la lista de celdas
-            board.printBoard();        // imprime el tablero en cada paso
-        });
-
-        sorter.sort(board.getCells(), CellComparators.BY_NUMBER);  // o BY_LETTER
-
+        } catch (IllegalArgumentException e) {
+            // If validation fails, print a helpful error message
+            System.err.println("Error: " + e.getMessage());
+            System.err.println();
+            CLIInputValidator.printHelp();
+        } catch (Exception e) {
+            // Catch any other unexpected errors
+            System.err.println("An unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

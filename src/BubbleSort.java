@@ -12,7 +12,7 @@ public class BubbleSort<T> implements SortStrategy<T> {
     }
 
     @Override
-    public void sort(List<T> list, Comparator<T> comparator) {
+    public void sort(List<T> list, Comparator<T> comparator, int pauseTime) {
         int n = list.size();
         boolean swapped;
 
@@ -29,7 +29,7 @@ public class BubbleSort<T> implements SortStrategy<T> {
 
                     // Pequeña pausa visual (opcional)
                     try {
-                        Thread.sleep(0); // 200ms de espera
+                        Thread.sleep(pauseTime); // 200ms de espera
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
