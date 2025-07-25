@@ -87,4 +87,6 @@ Chess/
 
 ## 📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles. (Si no tienes uno, considera añadirlo).
+Este proyecto está bajo la licencia MIT. Consulta archivo `LICENSE` para más detalles. (Si no tienes uno, considera añadirlo).
+
+# *MATEO ESTUVO AQUI*
