@@ -1,4 +1,5 @@
 # ♟️ Proyecto de Ajedrez con Visualización de Algoritmos de Ordenación ♟️
+## Este es un cambio que no deberia aparecer en la main
 
 ¡Bienvenido al proyecto de Ajedrez! Este es un juego de ajedrez implementado en Java, diseñado para ser jugado a través de la línea de comandos. Lo que hace a este proyecto único es la **integración de algoritmos de ordenación**, que pueden ser visualizados o aplicados a las celdas del tablero, ofreciendo una perspectiva educativa y técnica más allá del juego tradicional.
 
