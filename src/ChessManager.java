@@ -1,3 +1,9 @@
+/**
+ * The main orchestrator of the sorting visualization process.
+ * This class takes the validated command-line arguments, initializes the board,
+ * selects the appropriate sorting strategy, and executes the sorting process,
+ * printing the board state at each step.
+ */
 public class ChessManager {
 
     private final String sorterAlgorithm;
@@ -10,7 +16,8 @@ public class ChessManager {
     private SortStrategy<Cell> sortStrategy;
 
     /**
-     * Constructor that takes a validator object to initialize the manager.
+     * Constructs a ChessManager and initializes the entire sorting visualization process.
+     *
      * @param validator The validated input arguments from the CLI.
      */
     public ChessManager(CLIInputValidator validator) {
@@ -23,6 +30,11 @@ public class ChessManager {
         initializeChessGame();
     }
 
+    /**
+     * Sets up and runs the sorting visualization.
+     * This involves creating the board, selecting the sorting strategy and comparator,
+     * and then running the sort.
+     */
     private void initializeChessGame() {
         // 1. Create the board with the specified pieces
         this.board = new Board(colorOfPiece, numberOfPieces);

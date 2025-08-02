@@ -1,3 +1,8 @@
+/**
+ * Parses and validates the command-line arguments provided to the application.
+ * This class ensures that all required parameters are present and fall within
+ * the expected values before the main logic of the program proceeds.
+ */
 public class CLIInputValidator {
 
     private final String[] args;
@@ -8,12 +13,22 @@ public class CLIInputValidator {
     private int numberOfPieces;
     private int pauseTime;
 
+    /**
+     * Constructs a validator and immediately parses and validates the provided arguments.
+     *
+     * @param args The command-line arguments from the main method.
+     * @throws IllegalArgumentException if any argument is invalid.
+     */
     public CLIInputValidator(String[] args) {
         this.args = args;
         parseArguments();
         validateArguments();
     }
 
+    /**
+     * Parses the raw string arguments into their corresponding fields.
+     * Arguments are expected in a "key=value" format.
+     */
     private void parseArguments() {
         for (String arg : args) {
             String[] parts = arg.split("=");
@@ -55,6 +70,11 @@ public class CLIInputValidator {
         }
     }
 
+    /**
+     * Validates the parsed arguments to ensure they meet the application's requirements.
+     *
+     * @throws IllegalArgumentException if any validation rule fails.
+     */
     private void validateArguments() {
         if (sorterAlgorithm == null || !java.util.Arrays.asList("s", "b", "i", "q", "h", "c", "r", "m").contains(sorterAlgorithm.toLowerCase())) {
             throw new IllegalArgumentException("Invalid sorting algorithm. Allowed: S, B, I, Q, H, C, R, M");
@@ -77,6 +97,7 @@ public class CLIInputValidator {
         }
     }
 
+    //<editor-fold desc="Getters">
     public String getSorterAlgorithm() {
         return sorterAlgorithm;
     }
@@ -96,7 +117,11 @@ public class CLIInputValidator {
     public int getPauseTime() {
         return pauseTime;
     }
+    //</editor-fold>
 
+    /**
+     * Prints a help message to the console detailing the correct usage and available arguments.
+     */
     public static void printHelp() {
         System.out.println("Usage: java Program [arguments]");
         System.out.println("Arguments:");

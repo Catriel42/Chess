@@ -1,3 +1,8 @@
+/**
+ * This enum represents the set of white chess pieces, implementing the Piece interface.
+ * Each piece is defined as a constant with its specific attributes: a number and a letter for sorting,
+ * and a Unicode character for its abbreviation on the board.
+ */
 public enum WhitePieces implements Piece {
     KING      (4,  'a', "\u2654"), // ♔
     QUEEN     (5,  'b', "\u2655"), // ♕
@@ -20,20 +25,30 @@ public enum WhitePieces implements Piece {
     private final char letter;
     private final String abbreviation;
 
+    /**
+     * Constructs a WhitePiece with its sorting attributes and abbreviation.
+     *
+     * @param number The number used for numerical sorting.
+     * @param letter The letter used for alphabetical sorting.
+     * @param abbreviation The Unicode character representing the piece.
+     */
     WhitePieces(int number, char letter, String abbreviation) {
         this.number = number;
         this.letter = letter;
         this.abbreviation = abbreviation;
     }
 
+    @Override
     public int getNumber() {
         return number;
     }
 
+    @Override
     public char getLetter() {
         return letter;
     }
 
+    @Override
     public String getAbbreviation() {
         return abbreviation;
     }

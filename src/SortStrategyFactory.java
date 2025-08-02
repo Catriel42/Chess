@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 /**
  * A factory class for creating instances of SortStrategy.
  * This class decouples the client (ChessManager) from the concrete implementation
- * of the sorting algorithms.
+ * of the sorting algorithms, following the Factory design pattern.
  */
 public class SortStrategyFactory {
 
@@ -13,7 +13,7 @@ public class SortStrategyFactory {
      * Creates and returns a sorting strategy based on the provided algorithm identifier.
      *
      * @param algorithm The short identifier for the algorithm (e.g., "b" for BubbleSort).
-     * @param onStep    The action to perform after each significant step of the algorithm.
+     * @param onStep    The action to perform after each significant step of the algorithm for visualization.
      * @return An instance of a class that implements SortStrategy.
      * @throws IllegalArgumentException if the algorithm identifier is unknown or unsupported.
      */
@@ -29,13 +29,11 @@ public class SortStrategyFactory {
                 return new InsertionSort<>(onStep);
             case "q":
                 return new QuickSort<>(onStep);
-            
             case "m":
                 return new MergeSort<>(onStep);
-            // --- Future algorithms will be added here ---
+            // --- Future algorithms can be added here ---
             // case "s":
             //     return new SelectionSort<>(onStep);
-            
             default:
                 throw new IllegalArgumentException("Unknown or unsupported sort algorithm: '" + algorithm + "'");
         }

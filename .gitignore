@@ -1,29 +1,16 @@
-### IntelliJ IDEA ###
+# Compiled Java class files
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+*.class
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Log files
+*.log
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# IDE configuration files
+.idea/
+*.iml
 
-### VS Code ###
-.vscode/
-
-### Mac OS ###
+# macOS specific files
 .DS_Store
+
+# Windows thumbnail cache
+Thumbs.db

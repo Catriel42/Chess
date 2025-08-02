@@ -1,92 +1,97 @@
-# ♟️ Proyecto de Ajedrez con Visualización de Algoritmos de Ordenación ♟️
+# Sorting Algorithm Visualizer using a Chessboard Metaphor
 
-¡Bienvenido al proyecto de Ajedrez! Este es un juego de ajedrez implementado en Java, diseñado para ser jugado a través de la línea de comandos. Lo que hace a este proyecto único es la **integración de algoritmos de ordenación**, que pueden ser visualizados o aplicados a las celdas del tablero, ofreciendo una perspectiva educativa y técnica más allá del juego tradicional.
+Welcome! This is a unique command-line tool, written in Java, that visualizes classic sorting algorithms in a highly original way: by using a chessboard and its pieces as the data to be sorted.
 
-## ✨ Características Principales
+**Please Note:** This is an educational tool for visualizing algorithms and **not** a playable chess game.
 
-### Juego de Ajedrez
+## ✨ Core Concept
 
--   **Juego Completo de Ajedrez:** Implementación de las reglas básicas del ajedrez.
--   **Movimientos de Piezas:** Soporte para los movimientos de todas las piezas (Peón, Torre, Caballo, Alfil, Reina, Rey).
--   **Validación de Movimientos:** El juego valida los movimientos para asegurar que se ajusten a las reglas del ajedrez.
--   **Interfaz de Línea de Comandos (CLI):** Juega directamente en tu terminal con una interfaz clara y sencilla.
+The program works by placing a specified number of chess pieces randomly onto an 8x8 board. It then sorts these pieces based on a chosen algorithm and comparison criteria (either by a number or a letter assigned to each piece).
 
-### Visualización de Algoritmos de Ordenación
+The key feature is the visualization: after each significant step of the sorting algorithm (e.g., a swap), the entire board is reprinted to the console. This creates a step-by-step animation, allowing you to observe how each algorithm operates and manipulates the data.
 
--   **Algoritmos Implementados:** Incluye implementaciones de algoritmos de ordenación como Bubble Sort, Insertion Sort, Merge Sort y Quick Sort.
--   **Estrategia de Ordenación:** Utiliza un patrón Strategy para aplicar diferentes algoritmos de ordenación de manera flexible.
--   **Aplicación a Celdas del Tablero:** Los algoritmos de ordenación pueden ser aplicados o visualizados en las celdas del tablero de ajedrez, lo que sugiere una funcionalidad de demostración o análisis.
+## 🚀 Features
 
-## 🚀 Tecnologías Utilizadas
+-   **Multiple Sorting Algorithms:** Visualize and compare different sorting strategies.
+    -   Bubble Sort
+    -   Insertion Sort
+    -   Quick Sort
+    -   Merge Sort
+-   **Configurable Execution:** Tailor the visualization to your needs through command-line arguments:
+    -   Choose the **sorting algorithm**.
+    -   Select the **sorting criteria** (numeric or alphabetic).
+    -   Define the **number of pieces** on the board.
+    -   Control the **visualization speed** with a configurable pause between steps.
+-   **Clean Architecture:** The project leverages fundamental design patterns:
+    -   **Strategy Pattern:** To easily switch between different sorting algorithms.
+    -   **Factory Pattern:** To decouple the main logic from the concrete algorithm implementations.
 
--   **Java:** El lenguaje principal de desarrollo.
+## ⚙️ How to Use
 
-## ⚙️ Configuración y Ejecución
+### Prerequisites
 
-Para poner en marcha este proyecto en tu máquina local, sigue los siguientes pasos:
+Ensure you have a Java Development Kit (JDK) installed on your system.
 
-### Prerrequisitos
+### Compilation
 
-Asegúrate de tener instalado el Java Development Kit (JDK) en tu sistema. Puedes descargarlo desde el sitio oficial de Oracle o usar un gestor de paquetes como `sdkman`.
+The project is structured to be compiled directly from the command line using the standard Java compiler, `javac`.
 
-### Clonar el Repositorio
+**Command:**
+```bash
+javac -d out/production/Chess src/*.java
+```
+
+### Running the Visualizer
+
+After successful compilation, run the program using the `java` command, which executes the Java Virtual Machine (JVM).
+
+**Command:**
+```bash
+java -cp out/production/Chess Main [ARGUMENTS]
+```
+
+#### Command-Line Arguments
+
+All arguments are required and use a `key=value` format:
+
+-   `a=<algorithm>`: The sorting algorithm to use.
+    -   `b`: Bubble Sort
+    -   `i`: Insertion Sort
+    -   `q`: Quick Sort
+    -   `m`: Merge Sort
+-   `t=<type>`: The comparison criteria for sorting. Each piece, defined in `WhitePieces.java` and `BlackPieces.java`, has both a hard-coded number and a letter. This flag determines which of those attributes is used for comparison.
+    -   `n`: Sort by the number associated with each piece.
+    -   `c`: Sort by the letter associated with each piece.
+-   `c=<color>`: The color of the pieces to use.
+    -   `w`: White pieces
+    -   `b`: Black pieces
+-   `r=<number>`: The number of pieces to place on the board.
+    -   Allowed values: `8`, `10`, `16`.
+-   `s=<milliseconds>`: The pause time between each step of the algorithm.
+    -   Allowed values: `0` to `1000`.
+
+#### Example
+
+To run a visualization of **Bubble Sort** (`a=b`) on **16 black pieces** (`r=16`, `c=b`), sorting them by **number** (`t=n`) with a **100ms pause** (`s=100`) between steps, use the following command:
 
 ```bash
-git clone https://github.com/tu-usuario/Chess.git # Reemplaza con la URL de tu repositorio
-cd Chess
+java -cp out/production/Chess Main a=b t=n c=b r=16 s=100
 ```
 
-### Compilar y Ejecutar
+## 📂 Project Structure
 
-Dado que este es un proyecto Java, puedes compilarlo y ejecutarlo usando `javac` y `java`.
+The project is organized with a clear separation of concerns:
 
-```bash
-# Compilar los archivos fuente
-javac -d out/production/Chess src/*.java src/**/*.java
+-   `Main.java`: The entry point of the application.
+-   `CLIInputValidator.java`: Parses and validates all command-line arguments.
+-   `ChessManager.java`: The core class that orchestrates the setup and execution of the sorting visualization.
+-   `Board.java` & `Cell.java`: Represent the chessboard and its individual cells.
+-   `Piece.java`, `WhitePieces.java`, `BlackPieces.java`: Define the interface and concrete implementations for the chess pieces, which act as the data elements.
+-   `SortStrategy.java`: The interface for all sorting algorithm implementations (Strategy Pattern).
+-   `BubbleSort.java`, `InsertionSort.java`, etc.: Concrete implementations of the sorting algorithms.
+-   `SortStrategyFactory.java`: A factory class to create the appropriate sorting strategy instance based on user input.
+-   `CellComparators.java`: Provides `Comparator` objects used to define the sorting logic (by number or by letter).
 
-# Ejecutar el juego (o la demostración de ordenación, dependiendo de los argumentos)
-java -cp out/production/Chess Main [argumentos_para_ordenacion]
-```
+## 🤝 Contributions
 
-**Nota:** Si estás utilizando un IDE como IntelliJ IDEA (como sugiere el archivo `Chess.iml`), puedes simplemente abrir el proyecto y ejecutar la clase `Main` directamente. Los argumentos de línea de comandos para la funcionalidad de ordenación se pasarían a través de la configuración de ejecución del IDE.
-
-## 🎮 Cómo Jugar / Usar
-
-Una vez que el juego se inicie, verás el tablero de ajedrez en tu terminal. El juego te pedirá que ingreses tus movimientos. Los movimientos se ingresan típicamente en notación de ajedrez (por ejemplo, `e2 e4` para mover un peón de e2 a e4).
-
-Para la funcionalidad de ordenación, el programa puede aceptar argumentos de línea de comandos para especificar el algoritmo a utilizar y cómo se visualiza. Consulta la ayuda de la línea de comandos (`java -cp out/production/Chess Main --help`) o el código fuente de `CLIInputValidator` para más detalles sobre los argumentos disponibles.
-
-## 📂 Estructura del Proyecto
-
-```
-Chess/
-├───.git/
-├───.idea/ # Archivos de configuración de IntelliJ IDEA
-├───out/ # Clases compiladas
-└───src/
-    ├───BlackPieces.java
-    ├───Board.java
-    ├───BubbleSort.java
-    ├───Cell.java
-    ├───CellComparators.java
-    ├───ChessManager.java
-    ├───CLIInputValidator.java
-    ├───InsertionSort.java
-    ├───Main.java
-    ├───MergeSort.java
-    ├───Piece.java
-    ├───QuickSort.java
-    ├───SortStrategy.java
-    ├───SortStrategyFactory.java
-    └───WhitePieces.java
-```
-
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar el juego, reportar errores o añadir nuevas características, no dudes en abrir un *issue* o enviar un *pull request*.
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT. Consulta archivo `LICENSE` para más detalles. (Si no tienes uno, considera añadirlo).
-
-# *MATEO ESTUVO AQUI*
+Contributions are welcome! If you have ideas for improvements, new features, or bug fixes, feel free to open an issue or submit a pull request.

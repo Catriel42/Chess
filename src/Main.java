@@ -1,8 +1,19 @@
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
 
+/**
+ * The main entry point for the Sorting Algorithm Visualizer application.
+ * This class is responsible for parsing command-line arguments, handling exceptions,
+ * and measuring the total execution time of the program.
+ */
 public class Main {
 
+    /**
+     * The main method that starts the application.
+     *
+     * @param args Command-line arguments that configure the sorting visualization.
+     *             Use `a` for algorithm, `t` for type, `c` for color, `r` for number of pieces, and `s` for speed.
+     */
     public static void main(String[] args) {
         long startTime = System.nanoTime();
         ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();

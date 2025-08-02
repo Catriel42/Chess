@@ -3,10 +3,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Implements the Merge Sort algorithm.
+ * This strategy uses a divide-and-conquer approach, dividing the list into two halves,
+ * recursively sorting them, and then merging the sorted halves.
+ *
+ * @param <T> The type of elements to be sorted.
+ */
 public class MergeSort<T> implements SortStrategy<T> {
 
     private final Consumer<List<T>> onStep;
 
+    /**
+     * Constructs a MergeSort strategy.
+     *
+     * @param onStep A consumer function that is called after each merge operation, allowing for visualization.
+     */
     public MergeSort(Consumer<List<T>> onStep) {
         this.onStep = onStep;
     }

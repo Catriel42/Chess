@@ -4,10 +4,23 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Implements the Quick Sort algorithm.
+ * This strategy uses a divide-and-conquer approach, selecting a 'pivot' element
+ * and partitioning the other elements into two sub-arrays according to whether
+ * they are less than or greater than the pivot.
+ *
+ * @param <T> The type of elements to be sorted.
+ */
 public class QuickSort<T> implements SortStrategy<T> {
 
     private final Consumer<List<T>> onStep;
 
+    /**
+     * Constructs a QuickSort strategy.
+     *
+     * @param onStep A consumer function that is called after each swap, allowing for visualization.
+     */
     public QuickSort(Consumer<List<T>> onStep) {
         this.onStep = onStep;
     }
