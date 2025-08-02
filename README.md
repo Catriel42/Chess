@@ -1,5 +1,7 @@
 # Sorting Algorithm Visualizer using a Chessboard Metaphor
 
+[Español](README_es.md)
+
 ![Java](https://img.shields.io/badge/Java-21-blue?style=for-the-badge&logo=java)
 
 Welcome! This is a unique command-line tool, written in Java, that visualizes classic sorting algorithms in a highly original way: by using a chessboard and its pieces as the data to be sorted.
