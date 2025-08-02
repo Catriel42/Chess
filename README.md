@@ -78,6 +78,8 @@ To run a visualization of **Bubble Sort** (`a=b`) on **16 black pieces** (`r=16`
 java -cp out/production/Chess Main a=b t=n c=b r=16 s=100
 ```
 
+https://github.com/user-attachments/assets/ce1e2ed5-219c-4b07-b3ad-423f7c9ccd22
+
 ## 📂 Project Structure
 
 The project is organized with a clear separation of concerns:
