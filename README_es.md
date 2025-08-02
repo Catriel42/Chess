@@ -82,6 +82,8 @@ Para ejecutar una visualización de **Bubble Sort** (`a=b`) con **16 piezas negr
 java -cp out/production/Chess Main a=b t=n c=b r=16 s=100
 ```
 
+https://github.com/user-attachments/assets/ce1e2ed5-219c-4b07-b3ad-423f7c9ccd22
+
 ## 📂 Estructura del Proyecto
 
 El proyecto está organizado con una clara separación de responsabilidades:
